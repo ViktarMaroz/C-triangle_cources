@@ -1,0 +1,60 @@
+Тип треугольника
+Определите тип треугольника (остроугольный, тупоугольный, прямоугольный) с данными сторонами.
+
+Входные данные
+Даны три натуральных числа – стороны треугольника. Каждое число не превышает 1000010000.
+
+Выходные данные
+Необходимо вывести одно из слов: "right" для прямоугольного треугольника, "acute" для остроугольного треугольника, "obtuse" для тупоугольного треугольника или "impossible", если входные числа не образуют треугольник.
+Sample Input 1:
+
+3
+4
+5
+Sample Output 1:
+
+right
+Sample Input 2:
+
+4
+5
+3
+Sample Output 2:
+
+right
+
+Решение
+
+using System;
+
+public class MainClass
+{
+    public static void Main()
+    {
+        int a = Convert.ToInt32(Console.ReadLine());
+        int b = Convert.ToInt32(Console.ReadLine());
+        int c = Convert.ToInt32(Console.ReadLine());
+        if (a<(b+c) && b<(a+c) && c<(a+b))
+        {
+            if (Math.Pow(c, 2)==Math.Pow(a, 2)+Math.Pow(b, 2))
+            {
+             Console.WriteLine("right");
+            }
+                  else
+                  {
+                  if (Math.Pow(c, 2)<Math.Pow(a, 2)+Math.Pow(b, 2))
+                  {
+                      Console.WriteLine("acute");
+                  }
+                          else
+                          {
+                          Console.WriteLine("obtuse");
+                          }
+                  }
+        }
+         else
+         {
+             Console.WriteLine("impossible");
+         }
+    }
+}
