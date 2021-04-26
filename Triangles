@@ -24,37 +24,47 @@ Sample Output 2:
 right
 
 Решение
-
 using System;
 
 public class MainClass
 {
     public static void Main()
     {
-        int a = Convert.ToInt32(Console.ReadLine());
-        int b = Convert.ToInt32(Console.ReadLine());
-        int c = Convert.ToInt32(Console.ReadLine());
-        if (a<(b+c) && b<(a+c) && c<(a+b))
+        int x1 = Convert.ToInt32(Console.ReadLine());
+        int x2 = Convert.ToInt32(Console.ReadLine());
+        int x3 = Convert.ToInt32(Console.ReadLine());
+        
+        int c = Math.Max(Math.Max(x1, x2), Math.Max(x2,x3));
+        int a = Math.Min(Math.Min(x1, x2), Math.Min(x2, x3));
+        int b = (x1 + x2 + x3) - (c + a);
+            
+        double t = Math.Pow(c, 2);
+        double d = (Math.Pow(a, 2) + Math.Pow(b, 2)); 
+        if (a >= b + c || b >= a + c || c >= a + b)
+        
         {
-            if (Math.Pow(c, 2)==Math.Pow(a, 2)+Math.Pow(b, 2))
-            {
-             Console.WriteLine("right");
-            }
-                  else
-                  {
-                  if (Math.Pow(c, 2)<Math.Pow(a, 2)+Math.Pow(b, 2))
-                  {
-                      Console.WriteLine("acute");
-                  }
-                          else
-                          {
-                          Console.WriteLine("obtuse");
-                          }
-                  }
+        Console.WriteLine("impossible");
         }
-         else
-         {
-             Console.WriteLine("impossible");
-         }
-    }
+        else
+               {
+                if (t == d)
+                {
+                Console.WriteLine("right");
+                }
+                       else
+                       { 
+                           if (t>d)
+                           {
+                           Console.WriteLine("obtuse");
+                           }
+                           else
+                           {
+                                 if (t<d)
+                                 {
+                                 Console.WriteLine("acute");
+                                 }        
+                            }
+                         }
+               }
+    }          
 }
